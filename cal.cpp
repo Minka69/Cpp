@@ -10,8 +10,10 @@ int main() {
     cout << "Enter second number: ";
     cin >> num2;
 
+
     cout << "Enter an operation (+, -, *, /): ";
     cin >> operation;
+
     switch(operation) {
         case '+':
             result = num1 + num2;
@@ -37,6 +39,10 @@ int main() {
             cout << "Invalid operation!" << endl;
             break;
     }
+
+    cout << "Press Enter to exit...";
+    cin.ignore();
+    cin.get();
 
     return 0;
 }
