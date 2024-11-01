@@ -1,6 +1,7 @@
 #include <iostream>
+using namespace std;
 
 int main() {
-    std::cout << "Hello, Linux!" << std::endl;
+    cout << "Hello, Linux!" << std::endl;
     return 0;
 }
