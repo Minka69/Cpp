@@ -1,12 +1,22 @@
 #include <iostream>
 using namespace std;
-#include <cstdlib>    // For rand() and srand()
+#include <cstdlib>    // For rand(), srand(), and getenv()
 #include <ctime>      // For time()
 #include <limits>     // For std::numeric_limits
 #include <string>     // For std::string
 #include <vector>     // For std::vector to store guesses
 
 int main() {
+    // Get the username from the environment variable
+    const char* username = getenv("USER");
+
+    // Greet the user
+    if (username) {
+        cout << "Hello, " << username << "! Welcome to the Number Guessing Game!\n";
+    } else {
+        cout << "Hello, Linux user! Welcome to the Number Guessing Game!\n";
+    }
+
     srand(static_cast<unsigned int>(std::time(0)));
 
     bool playAgain = true;
@@ -20,7 +30,6 @@ int main() {
         int attempts = 0;           // Track guesses within the current game
         vector<int> guesses;   // Vector to store each guess in the current game
         
-        cout << "Welcome to the Number Guessing Game!\n";
         cout << "I've chosen a number between 1 and 100. Try to guess it!\n";
         cout << "Type 'exit' anytime to quit the game.\n";
 
@@ -33,7 +42,7 @@ int main() {
 
             // Check if the player wants to exit
             if (input == "exit") {
-                cout << "Thanks for playing! Goodbye!\n";
+                cout << "Thanks for playing! Goodbye, " << (username ? username : "Linux user") << "!\n";
                 cout << "Total rounds played: " << totalRounds - 1 << "\n";  // Subtract 1 to not count the unfinished game
                 return 0;  // Exit the program immediately
             }
@@ -81,10 +90,11 @@ int main() {
 
         if (choice == 'n' || choice == 'N') {
             playAgain = false;
-            cout << "Thanks for playing! Goodbye!\n";
+            cout << "Thanks for playing, " << (username ? username : "Linux user") << "! Goodbye!\n";
             cout << "Total rounds played: " << totalRounds << "\n";
         }
     }
 
     return 0;
 }
+
